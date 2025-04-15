@@ -1,5 +1,15 @@
 import React from "react";
 
 export const Sidebar = () => {
-  return <div>Sidebar</div>;
+  return (
+    <aside className="lateral">
+      <div className="search">
+        <h3 className="title">Buscador</h3>
+        <form>
+          <input type="text" id="search_field" />
+          <button id="search">Buscar</button>
+        </form>
+      </div>
+    </aside>
+  );
 };
