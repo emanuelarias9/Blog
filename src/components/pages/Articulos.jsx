@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Global } from "../../helpers/Global";
+import { apiClientService } from "../../helpers/apiClientService";
 
 export const Articulos = () => {
   const [articulos, setArticulos] = useState([]);
@@ -7,14 +9,14 @@ export const Articulos = () => {
   }, []);
 
   const obtenerArticulos = async () => {
-    const url = "http://localhost:3900/api/articulos";
-    let peticion = await fetch(url);
-    let response = await peticion.json();
+    const urlPeticion = Global.urlApiBase + "/articulos";
+    // eslint-disable-next-line no-unused-vars
+    let { response, loading } = await apiClientService(urlPeticion, "GET");
+    console.log(response);
     if (response.status === "Success") {
-      console.log(response);
       setArticulos(response.articulos);
     } else {
-      console.error("Error al cargar los articulos" + response.mensaje);
+      console.error("Error al cargar los articulos " + response.mensaje);
     }
   };
   return (
