@@ -22,8 +22,9 @@ export const Articulos = () => {
   };
   return (
     <>
-      {loading ? <h1>Cargando...</h1> : ""}
-      {articulos.length >= 1 ? (
+      {loading ? (
+        <h1>Cargando...</h1>
+      ) : articulos.length >= 1 ? (
         articulos.map((articulo) => {
           return (
             <article key={articulo._id} className="articulo-item">
