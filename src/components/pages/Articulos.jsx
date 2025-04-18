@@ -4,13 +4,13 @@ import { apiClientService } from "../../helpers/apiClientService";
 
 export const Articulos = () => {
   const [articulos, setArticulos] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     obtenerArticulos();
   }, []);
 
   const obtenerArticulos = async () => {
     const urlPeticion = Global.urlApiBase + "/articulos";
-    // eslint-disable-next-line no-unused-vars
     let { response, loading } = await apiClientService(urlPeticion, "GET");
     console.log(response);
     if (response.status === "Success") {
@@ -18,9 +18,11 @@ export const Articulos = () => {
     } else {
       console.error("Error al cargar los articulos " + response.mensaje);
     }
+    setLoading(loading);
   };
   return (
     <>
+      {loading ? <h1>Cargando...</h1> : ""}
       {articulos.length >= 1 ? (
         articulos.map((articulo) => {
           return (
