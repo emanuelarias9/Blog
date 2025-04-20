@@ -17,7 +17,7 @@ export const apiClientService = async (
     });
   }
 
-  let response = await peticion.json();
+  let apiResponse = await peticion.json();
   loading = false;
-  return { response, loading };
+  return { apiResponse, loading };
 };

@@ -11,12 +11,11 @@ export const Articulos = () => {
 
   const obtenerArticulos = async () => {
     const urlPeticion = Global.urlApiBase + "/articulos";
-    let { response, loading } = await apiClientService(urlPeticion, "GET");
-    console.log(response);
-    if (response.status === "Success") {
-      setArticulos(response.articulos);
+    let { apiResponse, loading } = await apiClientService(urlPeticion, "GET");
+    if (apiResponse.status === "Success") {
+      setArticulos(apiResponse.articulos);
     } else {
-      console.error("Error al cargar los articulos " + response.mensaje);
+      console.error("Error al cargar los articulos " + apiResponse.mensaje);
     }
     setLoading(loading);
   };
