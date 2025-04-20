@@ -18,16 +18,26 @@ export const Crear = () => {
     );
     if (apiResponse.status === "Success") {
       setResult(true);
+      limpiarInputs();
+      setTimeout(() => setResult(false), 5000);
     } else {
       setResult(false);
       console.error("Error al guardar el articulo " + apiResponse.mensaje);
     }
   };
 
+  const limpiarInputs = () => {
+    const formulario = document.querySelector(".formulario");
+    const inputs = formulario.querySelectorAll("input[type='text'], textarea");
+    inputs.forEach((input) => {
+      input.value = "";
+    });
+  };
+
   return (
     <div className="jumbo">
       <h1>Crear Articulo</h1>
-      <strong>{result ? "Articulo guardado" : ""}</strong>
+
       <form className="formulario" onSubmit={Guardar}>
         <div className="form-group">
           <label htmlFor="titulo">Titulo</label>
@@ -41,6 +51,11 @@ export const Crear = () => {
           <label htmlFor="file">Imagen</label>
           <input type="file" name="file" id="file" />
         </div>
+        {result && (
+          <div className="form-group toast-notification">
+            <p> Articulo creado </p>
+          </div>
+        )}
         <input type="submit" value="Guardar" className="btn btn-success" />
       </form>
     </div>
