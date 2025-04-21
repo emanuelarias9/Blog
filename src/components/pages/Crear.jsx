@@ -11,13 +11,14 @@ export const Crear = () => {
   const Guardar = async (e) => {
     e.preventDefault();
     let nuevoArticulo = form;
-    const { apiResponse, loading } = await apiClientService(
+    const { apiResponse } = await apiClientService(
       Global.urlApiBase + "/articulos",
       "POST",
       nuevoArticulo
     );
     if (apiResponse.status === "Success") {
       setResult(true);
+      subirImagen(apiResponse.articulo._id);
       limpiarInputs();
       setTimeout(() => setResult(false), 5000);
     } else {
@@ -32,6 +33,18 @@ export const Crear = () => {
     inputs.forEach((input) => {
       input.value = "";
     });
+  };
+
+  const subirImagen = async (articuloId) => {
+    const fileInput = document.querySelector("#file");
+    const formdata = new FormData();
+    formdata.append("file", fileInput.files[0]);
+    const imagen = await apiClientService(
+      Global.urlApiBase + "/articulos/imagen/" + articuloId,
+      "PUT",
+      formdata,
+      true
+    );
   };
 
   return (
