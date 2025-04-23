@@ -1,8 +1,21 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { Global } from "../../helpers/Global";
+import { apiClientService } from "../../helpers/apiClientService";
 
 export const Listado = ({ articulos, setArticulos }) => {
+  const EliminarArticulo = async (id) => {
+    let urlPeticion = Global.urlApiBase + "/articulos/" + id;
+    console.log(urlPeticion);
+    let { apiResponse } = await apiClientService(urlPeticion, "DELETE");
+    if (apiResponse.status === "Success") {
+      setArticulos((articulos) =>
+        articulos.filter((articulo) => articulo._id !== id)
+      );
+    } else {
+      console.error("Error al eliminar el articulo " + apiResponse.mensaje);
+    }
+  };
+
   return articulos.map((articulo) => {
     return (
       <article key={articulo._id} className="articulo-item">
@@ -24,7 +37,14 @@ export const Listado = ({ articulos, setArticulos }) => {
           <p className="description">{articulo.contenido} </p>
 
           <button className="edit">Editar</button>
-          <button className="delete">Borrar</button>
+          <button
+            className="delete"
+            onClick={() => {
+              EliminarArticulo(articulo._id);
+            }}
+          >
+            Borrar
+          </button>
         </div>
       </article>
     );

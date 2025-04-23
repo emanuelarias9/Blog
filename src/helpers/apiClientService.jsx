@@ -6,7 +6,7 @@ export const apiClientService = async (
 ) => {
   let peticion;
   let loading = true;
-  if (method === "GET") {
+  if (method === "GET" || method === "DELETE") {
     peticion = await fetch(urlPeticion);
   } else {
     if (file) {
