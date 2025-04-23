@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { apiClientService } from "../../helpers/apiClientService";
 import { Global } from "../../helpers/Global";
@@ -7,6 +7,8 @@ import { Global } from "../../helpers/Global";
 export const Crear = () => {
   const { form, enviado, cambiado } = useForm({});
   const [result, setResult] = useState(false);
+  const [error, setError] = useState(false);
+  const errorMessage = useRef("");
 
   const Guardar = async (e) => {
     e.preventDefault();
@@ -20,10 +22,12 @@ export const Crear = () => {
       setResult(true);
       subirImagen(apiResponse.articulo._id);
       limpiarInputs();
-      setTimeout(() => setResult(false), 5000);
+      setTimeout(() => setResult(false), 6000);
     } else {
       setResult(false);
-      console.error("Error al guardar el articulo " + apiResponse.mensaje);
+      setError(true);
+      setTimeout(() => setError(false), 6000);
+      errorMessage.current = apiResponse.mensaje;
     }
   };
 
@@ -45,6 +49,11 @@ export const Crear = () => {
       formdata,
       true
     );
+    if (imagen.apiResponse.status != "Success") {
+      errorMessage.current = imagen.apiResponse.mensaje;
+      setError(true);
+      setTimeout(() => setError(false), 6000);
+    }
   };
 
   return (
@@ -65,8 +74,13 @@ export const Crear = () => {
           <input type="file" name="file" id="file" />
         </div>
         {result && (
-          <div className="form-group toast-notification">
+          <div className="form-group toast-notification success">
             <p> Articulo creado </p>
+          </div>
+        )}
+        {error && (
+          <div className="form-group toast-notification error">
+            <p>{errorMessage.current}</p>
           </div>
         )}
         <input type="submit" value="Guardar" className="btn btn-success" />

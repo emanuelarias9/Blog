@@ -285,7 +285,6 @@ textarea {
 /* Estilos para la notificación toast */
 .toast-notification {
   background-color: #f8f8f8;
-  border-left: 5px solid #0b70e1;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 12px 20px;
   margin-top: 15px;
@@ -302,10 +301,26 @@ textarea {
 }
 
 .toast-notification p:before {
-  content: "✓";
-  color: #4caf50;
   margin-right: 10px;
   font-weight: bold;
+}
+
+.success {
+  border-left: 5px solid #0b70e1;
+}
+
+.success p:before {
+  content: "✓";
+  color: #4caf50;
+}
+
+.error {
+  border-left: 5px solid #9b0202;
+}
+
+.error p:before {
+  content: "✗";
+  color: #9b0202;
 }
 
 @keyframes slideIn {
