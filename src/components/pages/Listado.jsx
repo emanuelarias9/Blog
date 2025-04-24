@@ -6,7 +6,6 @@ import { apiClientService } from "../../helpers/apiClientService";
 export const Listado = ({ articulos, setArticulos }) => {
   const EliminarArticulo = async (id) => {
     let urlPeticion = Global.urlApiBase + "/articulos/" + id;
-    console.log(urlPeticion);
     let { apiResponse } = await apiClientService(urlPeticion, "DELETE");
     if (apiResponse.status === "Success") {
       setArticulos((articulos) =>
