@@ -107,15 +107,15 @@ body {
   border-radius: 10px;
   box-shadow: 0px 0px 6px #ddd;
   margin: 20px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 25px;
   text-align: left;
   max-height: 14.063rem;
   display: flex;
 }
 
 .articulo-item .mask {
-  width: 20%;
+  min-width: 25%;
+  max-width: 25%;
   overflow: hidden;
   margin-right: 40px;
 }
@@ -128,14 +128,25 @@ body {
   font-size: 30px;
 }
 
+.articulo-detalle h3 {
+  font-size: 30px;
+}
+.articulo-item h3 a {
+  text-decoration: none;
+  color: black;
+}
+
+.articulo-item h3 a:hover {
+  color: #0b70e1;
+}
+
 .jumbo {
-  width: 85%;
   padding: 50px;
   padding-bottom: 75px;
   background: white;
   border-radius: 10px;
   box-shadow: 0px 0px 6px #ddd;
-  margin: 25px auto;
+  margin: 25px;
 }
 
 .jumbo h1 {
@@ -195,8 +206,7 @@ input[type="button"] {
 
 .lateral > div {
   box-sizing: border-box;
-  width: 90%;
-  margin: 20px;
+  margin: 6px;
   padding: 20px;
   padding-top: 10px;
   background: white;
@@ -267,7 +277,31 @@ textarea {
   color: #0b468a;
   text-decoration: none;
 }
+.articulo-detalle {
+  flex-grow: 1;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #ddd;
+  margin: 20px;
+  padding: 25px;
+  text-align: left;
+  display: flex;
+}
 
+.articulo-detalle .mask {
+  min-width: 25%;
+  max-width: 25%;
+  overflow: hidden;
+  margin-right: 40px;
+}
+
+.title {
+  margin-top: 0px;
+}
+
+.articulo-detalle .mask img {
+  width: 100%;
+}
 @media (max-width: 1085px) {
   .content {
     flex-flow: column wrap;

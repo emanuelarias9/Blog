@@ -1,5 +1,6 @@
 import React from "react";
 import { Global } from "../../helpers/Global";
+import { Link } from "react-router-dom";
 import { apiClientService } from "../../helpers/apiClientService";
 
 export const Listado = ({ articulos, setArticulos }) => {
@@ -33,8 +34,14 @@ export const Listado = ({ articulos, setArticulos }) => {
           )}
         </div>
         <div className="datos">
-          <h3 className="title">{articulo.titulo} </h3>
-          <p className="description">{articulo.contenido} </p>
+          <h3 className="title">
+            <Link to={`/articulo/${articulo._id}`}>{articulo.titulo}</Link>
+          </h3>
+          <p className="description">
+            {articulo.contenido.length > 100
+              ? articulo.contenido.slice(0, 100) + "..."
+              : articulo.contenido}
+          </p>
 
           <button className="edit">Editar</button>
           <button
