@@ -41,8 +41,14 @@ export const Articulo = () => {
             )}
           </div>
           <div className="datos">
-            <h3 className="title">{articulo.titulo}</h3>
-            <p className="description">{articulo.contenido} </p>
+            <div className="title-date">
+              <h3 className="title">{articulo.titulo}</h3>
+              <span className="date">
+                Fecha de publicación:{" "}
+                {new Date(articulo.fecha).toLocaleDateString("es-ES")}
+              </span>
+            </div>
+            <p className="description">{articulo.contenido}</p>
           </div>
         </>
       ) : (

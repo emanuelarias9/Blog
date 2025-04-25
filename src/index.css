@@ -19,6 +19,7 @@ body {
     "content content content lateral"
     "footer footer footer footer";
   grid-template-rows: 100px 70px auto 70px;
+  grid-template-columns: 1fr 1fr 1fr 25%;
 }
 
 /*ESTILOS CABECERA*/
@@ -315,6 +316,15 @@ textarea {
 }
 .notFound {
   color: #9b0202;
+}
+
+.title-date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  font-weight: bold;
 }
 /* Estilos para la notificación toast */
 .toast-notification {

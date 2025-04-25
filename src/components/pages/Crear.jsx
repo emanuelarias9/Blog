@@ -20,7 +20,9 @@ export const Crear = () => {
     );
     if (apiResponse.status === "Success") {
       setResult(true);
-      subirImagen(apiResponse.articulo._id);
+      if (document.querySelector("#file").files.length > 0) {
+        subirImagen(apiResponse.articulo._id);
+      }
       limpiarInputs();
       setTimeout(() => setResult(false), 6000);
     } else {
