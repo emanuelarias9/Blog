@@ -15,7 +15,6 @@ export const Listado = ({ articulos, setArticulos }) => {
       console.error("Error al eliminar el articulo " + apiResponse.mensaje);
     }
   };
-
   return articulos.map((articulo) => {
     return (
       <article key={articulo._id} className="articulo-item">
@@ -42,7 +41,9 @@ export const Listado = ({ articulos, setArticulos }) => {
               : articulo.contenido}
           </p>
 
-          <button className="edit">Editar</button>
+          <Link to={`/editar-articulo/${articulo._id}`} className="button edit">
+            Editar
+          </Link>
           <button
             className="delete"
             onClick={() => {

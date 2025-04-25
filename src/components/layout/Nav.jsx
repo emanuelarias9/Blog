@@ -12,7 +12,7 @@ export const Nav = () => {
           <NavLink to="/articulos">Articulos</NavLink>
         </li>
         <li>
-          <NavLink to="/crear-articulos">Crear Articulo</NavLink>
+          <NavLink to="/crear-articulo">Crear Articulo</NavLink>
         </li>
         <li>
           <a href="#">Contacto</a>

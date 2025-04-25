@@ -9,6 +9,7 @@ import { Footer } from "../components/layout/Footer";
 import { Crear } from "../components/pages/Crear";
 import { Busqueda } from "../components/pages/Busqueda";
 import { Articulo } from "../components/pages/Articulo";
+import { Editar } from "../components/pages/Editar";
 
 export const Rutas = () => {
   return (
@@ -20,9 +21,10 @@ export const Rutas = () => {
           <Route path="/" element={<Inicio />} />
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/articulos" element={<Articulos />} />
-          <Route path="/crear-articulos" element={<Crear />} />
+          <Route path="/crear-articulo" element={<Crear />} />
           <Route path="/buscador/:busqueda" element={<Busqueda />} />
           <Route path="/articulo/:id" element={<Articulo />} />
+          <Route path="/editar-articulo/:id" element={<Editar />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </section>
