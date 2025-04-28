@@ -35,14 +35,14 @@ export const Articulo = () => {
               />
             ) : (
               <img
-                src="https://cdn-images-1.medium.com/max/868/1*yq7TPrTheULIcxwfTD96SA.png"
+                src="https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg"
                 alt={articulo.titulo}
               />
             )}
           </div>
           <div className="datos">
             <div className="title-date">
-              <h3 className="title">{articulo.titulo}</h3>
+              <h3 className="title-articulo">{articulo.titulo}</h3>
               <span className="date">
                 Fecha de publicación:{" "}
                 {new Date(articulo.fecha).toLocaleDateString("es-ES")}

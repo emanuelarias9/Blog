@@ -186,6 +186,16 @@ input[type="button"] {
   text-align: center;
 }
 
+.button-home {
+  text-decoration: none;
+  background: #0b70e1;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
 .articulo-item .edit {
   margin-right: 20px;
 }
@@ -305,9 +315,6 @@ textarea {
 .form-group .mask img {
   width: 200px;
 }
-.title {
-  margin-top: 0px;
-}
 
 .articulo-detalle .mask img {
   width: 100%;
@@ -327,9 +334,17 @@ textarea {
   color: #9b0202;
 }
 
+.datos {
+  width: 100%;
+}
+
 .title-date {
   display: flex;
   justify-content: space-between;
+}
+
+.title-articulo {
+  margin-top: 0px;
 }
 
 .date {

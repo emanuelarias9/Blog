@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, { useRef, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { apiClientService } from "../../helpers/apiClientService";
 import { Global } from "../../helpers/Global";
 
 export const Crear = () => {
-  const { form, enviado, cambiado } = useForm({});
+  const { form, cambiado } = useForm({ titulo: "", contenido: "" });
   const [result, setResult] = useState(false);
   const [error, setError] = useState(false);
   const errorMessage = useRef("");

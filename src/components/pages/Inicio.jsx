@@ -8,7 +8,7 @@ export const Inicio = () => {
       <p>
         Blog desarrollado con el MERN stack (MongoDB, ExpressJS, React y NodeJS)
       </p>
-      <Link to="/articulos" className="button">
+      <Link to="/articulos" className="button-home">
         Ver los articulos
       </Link>
     </div>

@@ -28,6 +28,7 @@ export const useForm = (obj = {}) => {
 
   return {
     form,
+    setForm,
     enviado,
     cambiado,
   };

@@ -26,7 +26,7 @@ export const Listado = ({ articulos, setArticulos }) => {
             />
           ) : (
             <img
-              src="https://cdn-images-1.medium.com/max/868/1*yq7TPrTheULIcxwfTD96SA.png"
+              src="https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg"
               alt={articulo.titulo}
             />
           )}

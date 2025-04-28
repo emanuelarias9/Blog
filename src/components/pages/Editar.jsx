@@ -5,7 +5,7 @@ import { Global } from "../../helpers/Global";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const Editar = () => {
-  const { form, cambiado } = useForm({});
+  const { form, setForm, cambiado } = useForm({});
   const [result, setResult] = useState(false);
   const [articulo, setArticulo] = useState({});
   const [error, setError] = useState(false);
@@ -21,8 +21,7 @@ export const Editar = () => {
     let { apiResponse } = await apiClientService(urlPeticion, "GET");
     if (apiResponse.status === "Success") {
       setArticulo(apiResponse.articulo);
-      form.titulo = apiResponse.articulo.titulo;
-      form.contenido = apiResponse.articulo.contenido;
+      setForm(apiResponse.articulo);
     } else {
       console.error("Error al obtener el articulo " + apiResponse.mensaje);
     }
