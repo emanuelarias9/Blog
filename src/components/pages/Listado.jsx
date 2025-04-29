@@ -1,7 +1,7 @@
 import React from "react";
 import { Global } from "../../helpers/Global";
 import { Link } from "react-router-dom";
-import { apiClientService } from "../../helpers/apiClientService";
+import { apiClientService } from "../../helpers/ApiClientService";
 
 export const Listado = ({ articulos, setArticulos }) => {
   const EliminarArticulo = async (id) => {

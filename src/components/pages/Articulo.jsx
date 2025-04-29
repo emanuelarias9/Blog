@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Global } from "../../helpers/Global";
-import { apiClientService } from "../../helpers/apiClientService";
+import { apiClientService } from "../../helpers/ApiClientService";
 import { useParams } from "react-router-dom";
 
 export const Articulo = () => {

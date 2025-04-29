@@ -1,10 +1,15 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useForm } from "../../hooks/useForm";
+import { clearForm } from "../../helpers/ClearForm";
 
 export const Contacto = () => {
   const [success, setSuccess] = useState(false);
-  const { form, cambiado } = useForm({ nombre: "", email: "", mensaje: "" });
+  const { form, cambiado, setForm } = useForm({
+    nombre: "",
+    email: "",
+    mensaje: "",
+  });
   const [errores, setErrores] = useState({});
   const errorMessage = useRef("");
   const contactForm = useRef();
@@ -36,6 +41,7 @@ export const Contacto = () => {
         }
       );
       setSuccess(true);
+      clearForm(".formulario", setForm);
       setTimeout(() => setSuccess(false), 5000);
     } catch (error) {
       errores.emailjs = true;

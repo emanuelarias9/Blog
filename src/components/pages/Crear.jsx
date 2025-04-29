@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import { apiClientService } from "../../helpers/apiClientService";
+import { apiClientService } from "../../helpers/ApiClientService";
+import { clearForm } from "../../helpers/ClearForm";
 import { Global } from "../../helpers/Global";
 
 export const Crear = () => {
-  const { form, cambiado } = useForm({ titulo: "", contenido: "" });
+  const { form, cambiado, setForm } = useForm({ titulo: "", contenido: "" });
   const [result, setResult] = useState(false);
   const [error, setError] = useState(false);
   const errorMessage = useRef("");
@@ -22,7 +23,7 @@ export const Crear = () => {
       if (document.querySelector("#file").files.length > 0) {
         subirImagen(apiResponse.articulo._id);
       }
-      limpiarInputs();
+      clearForm(".formulario", setForm);
       setTimeout(() => setResult(false), 6000);
     } else {
       setResult(false);
@@ -30,14 +31,6 @@ export const Crear = () => {
       setTimeout(() => setError(false), 6000);
       errorMessage.current = apiResponse.mensaje;
     }
-  };
-
-  const limpiarInputs = () => {
-    const formulario = document.querySelector(".formulario");
-    const inputs = formulario.querySelectorAll("input[type='text'], textarea");
-    inputs.forEach((input) => {
-      input.value = "";
-    });
   };
 
   const subirImagen = async (articuloId) => {

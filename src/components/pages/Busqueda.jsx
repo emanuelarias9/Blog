@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Global } from "../../helpers/Global";
-import { apiClientService } from "../../helpers/apiClientService";
+import { apiClientService } from "../../helpers/ApiClientService";
 import { Listado } from "./Listado";
 import { useParams } from "react-router-dom";
 
