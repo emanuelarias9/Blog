@@ -33,8 +33,8 @@ export const Contacto = () => {
     contactForm.current.mensaje.value = form.mensaje + " - desde el Blog";
     try {
       await emailjs.sendForm(
-        "service_qyvcwte",
-        "template_wxka8qs",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         contactForm.current,
         {
           publicKey: "cxOahMqeuvqW1iH85",
