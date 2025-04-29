@@ -27,7 +27,9 @@ export const Articulos = () => {
       ) : articulos.length >= 1 ? (
         <Listado articulos={articulos} setArticulos={setArticulos} />
       ) : (
-        <h1>No hay articulos para mostrar</h1>
+        <div className="jumbo">
+          <h1>No hay articulos para mostrar</h1>
+        </div>
       )}
     </>
   );

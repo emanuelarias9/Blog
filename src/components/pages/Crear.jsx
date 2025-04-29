@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import { useForm } from "../../hooks/useForm";
 import { apiClientService } from "../../helpers/ApiClientService";
+import { upladImage } from "../../helpers/UpladImage";
 import { clearForm } from "../../helpers/ClearForm";
+import { useForm } from "../../hooks/useForm";
 import { Global } from "../../helpers/Global";
 
 export const Crear = () => {
@@ -20,9 +21,7 @@ export const Crear = () => {
     );
     if (apiResponse.status === "Success") {
       setResult(true);
-      if (document.querySelector("#file").files.length > 0) {
-        subirImagen(apiResponse.articulo._id);
-      }
+      upladImage(apiResponse.articulo._id, "#file", setError, errorMessage);
       clearForm(".formulario", setForm);
       setTimeout(() => setResult(false), 6000);
     } else {
@@ -30,23 +29,6 @@ export const Crear = () => {
       setError(true);
       setTimeout(() => setError(false), 6000);
       errorMessage.current = apiResponse.mensaje;
-    }
-  };
-
-  const subirImagen = async (articuloId) => {
-    const fileInput = document.querySelector("#file");
-    const formdata = new FormData();
-    formdata.append("file", fileInput.files[0]);
-    const imagen = await apiClientService(
-      Global.urlApiBase + "/articulos/imagen/" + articuloId,
-      "PUT",
-      formdata,
-      true
-    );
-    if (imagen.apiResponse.status != "Success") {
-      errorMessage.current = imagen.apiResponse.mensaje;
-      setError(true);
-      setTimeout(() => setError(false), 6000);
     }
   };
 

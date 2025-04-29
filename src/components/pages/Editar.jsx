@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "../../hooks/useForm";
 import { apiClientService } from "../../helpers/ApiClientService";
-import { Global } from "../../helpers/Global";
 import { useNavigate, useParams } from "react-router-dom";
+import { upladImage } from "../../helpers/UpladImage";
+import { useForm } from "../../hooks/useForm";
+import { Global } from "../../helpers/Global";
 
 export const Editar = () => {
   const { form, setForm, cambiado } = useForm({});
@@ -39,9 +40,7 @@ export const Editar = () => {
 
     if (apiResponse.status === "Success") {
       setResult(true);
-      if (document.querySelector("#file").files.length > 0) {
-        subirImagen(params.id);
-      }
+      upladImage(params.id, "#file", setError, errorMessage);
       setTimeout(() => goTo("/articulos"), 1000);
     } else {
       setResult(false);
@@ -49,23 +48,6 @@ export const Editar = () => {
       setTimeout(() => setError(false), 5000);
       console.error(apiResponse.mensaje);
       errorMessage.current = apiResponse.mensaje;
-    }
-  };
-
-  const subirImagen = async (articuloId) => {
-    const fileInput = document.querySelector("#file");
-    const formdata = new FormData();
-    formdata.append("file", fileInput.files[0]);
-    const imagen = await apiClientService(
-      Global.urlApiBase + "/articulos/imagen/" + articuloId,
-      "PUT",
-      formdata,
-      true
-    );
-    if (imagen.apiResponse.status != "Success") {
-      errorMessage.current = imagen.apiResponse.mensaje;
-      setError(true);
-      setTimeout(() => setError(false), 6000);
     }
   };
 
