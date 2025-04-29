@@ -229,6 +229,7 @@ input[type="button"] {
 }
 
 input[type="text"],
+input[type="email"],
 textarea {
   display: block;
   margin: 0 auto;
@@ -246,6 +247,7 @@ textarea {
 .form-group {
   width: 50%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .form-group label {
@@ -256,18 +258,21 @@ textarea {
 }
 
 .form-group input[type="text"],
+input[type="email"],
 .form-group textarea {
   border: 1px solid #ddd;
   outline: 0;
   width: 100%;
   margin-top: 0;
   margin-bottom: 15px;
+  box-sizing: border-box;
 }
 .form-group input[type="file"] {
   outline: 0;
   width: 100%;
   margin-top: 0;
   margin-bottom: 15px;
+  box-sizing: border-box;
 }
 
 .editForm {
@@ -354,7 +359,7 @@ textarea {
 .toast-notification {
   background-color: #f8f8f8;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 12px 20px;
+  padding: 10px;
   margin-top: 15px;
   border-radius: 4px;
   animation: slideIn 0.3s ease-out;
@@ -400,4 +405,9 @@ textarea {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+input.input-error,
+textarea.input-error {
+  background-color: #ffcccc;
 }

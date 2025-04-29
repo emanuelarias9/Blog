@@ -60,7 +60,6 @@ export const Crear = () => {
   return (
     <div className="jumbo">
       <h1>Crear Articulo</h1>
-
       <form className="formulario" onSubmit={Guardar}>
         <div className="form-group">
           <label htmlFor="titulo">Titulo</label>
