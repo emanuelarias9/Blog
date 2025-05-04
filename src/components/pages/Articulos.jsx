@@ -23,7 +23,16 @@ export const Articulos = () => {
   return (
     <>
       {loading ? (
-        <h1>Cargando...</h1>
+        <div className="jumbo">
+          <h1>Cargando...</h1>
+          <br />
+          <h2>
+            si notas la carga lenta es por que la app esta desplegada en un
+            server gratuito lo cual hace que cada vez que el server se "duerme"
+            por inactividad todas las imagenes se eliminen y la proxima accion
+            "despierta" al server lo cual toma aproximadamente 50 segundos
+          </h2>
+        </div>
       ) : articulos.length >= 1 ? (
         <Listado articulos={articulos} setArticulos={setArticulos} />
       ) : (

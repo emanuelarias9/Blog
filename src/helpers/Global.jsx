@@ -1,3 +1,3 @@
 export const Global = {
-  urlApiBase: "http://localhost:3900/api",
+  urlApiBase: "https://api-blog-b0fd.onrender.com/api",
 };
