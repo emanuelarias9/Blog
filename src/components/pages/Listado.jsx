@@ -10,9 +10,7 @@ export const Listado = ({ articulos, setArticulos }) => {
         articulos.map(async (articulo) => {
           if (articulo.imagen !== "default.png") {
             const url = `${Global.urlApiBase}/articulos/imagen/${articulo.imagen}`;
-            console.log(url);
             const res = await apiClientService(url);
-            console.log("res", res);
             if (res.status != "OK") {
               articulo.imagen = "default.png";
             }
