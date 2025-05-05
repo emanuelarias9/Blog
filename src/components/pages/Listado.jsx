@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Global } from "../../helpers/Global";
 import { Link } from "react-router-dom";
 import { apiClientService } from "../../helpers/ApiClientService";
 
 export const Listado = ({ articulos, setArticulos }) => {
+  useEffect(() => {
+    const checkImages = async () => {
+      await Promise.all(
+        articulos.map(async (articulo) => {
+          if (articulo.imagen !== "default.png") {
+            const url = `${Global.urlApiBase}/articulos/imagen/${articulo.imagen}`;
+            console.log(url);
+            const res = await apiClientService(url);
+            console.log("res", res);
+            if (res.status != "OK") {
+              articulo.imagen = "default.png";
+            }
+          }
+        })
+      );
+    };
+
+    checkImages();
+  }, [articulos]);
+
   const EliminarArticulo = async (id) => {
     let urlPeticion = Global.urlApiBase + "/articulos/" + id;
     let { apiResponse } = await apiClientService(urlPeticion, "DELETE");
-    if (apiResponse.status === "Success") {
+    if (apiResponse.status === "OK") {
       setArticulos((articulos) =>
         articulos.filter((articulo) => articulo._id !== id)
       );

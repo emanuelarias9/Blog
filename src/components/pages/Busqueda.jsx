@@ -21,7 +21,7 @@ export const Busqueda = () => {
       "&contenido=" +
       params.busqueda;
     let { apiResponse, loading } = await apiClientService(urlPeticion, "GET");
-    if (apiResponse.status === "Success") {
+    if (apiResponse.status === "OK") {
       setArticulos(apiResponse.articulos);
     } else {
       setArticulos([]);

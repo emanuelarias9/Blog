@@ -14,7 +14,7 @@ export const Articulo = () => {
   const obtenerArticulo = async () => {
     const urlPeticion = Global.urlApiBase + `/articulos/${params.id}`;
     let { apiResponse, loading } = await apiClientService(urlPeticion, "GET");
-    if (apiResponse.status === "Success") {
+    if (apiResponse.status === "OK") {
       setArticulo(apiResponse.articulo);
     } else {
       console.error("Error al obtener el articulo " + apiResponse.mensaje);

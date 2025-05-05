@@ -19,7 +19,7 @@ export const Crear = () => {
       "POST",
       nuevoArticulo
     );
-    if (apiResponse.status === "Success") {
+    if (apiResponse.status === "OK") {
       setResult(true);
       upladImage(apiResponse.articulo._id, "#file", setError, errorMessage);
       clearForm(".formulario", setForm);

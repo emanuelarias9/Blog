@@ -13,7 +13,7 @@ export const Articulos = () => {
   const obtenerArticulos = async () => {
     const urlPeticion = Global.urlApiBase + "/articulos";
     let { apiResponse, loading } = await apiClientService(urlPeticion, "GET");
-    if (apiResponse.status === "Success") {
+    if (apiResponse.status === "OK") {
       setArticulos(apiResponse.articulos);
     } else {
       console.error("Error al cargar los articulos " + apiResponse.mensaje);

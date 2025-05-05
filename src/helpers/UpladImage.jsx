@@ -18,7 +18,7 @@ export const upladImage = async (
     true
   );
 
-  if (imagen.apiResponse.status !== "Success") {
+  if (imagen.apiResponse.status !== "OK") {
     errorMessageRef.current = imagen.apiResponse.mensaje;
     setError(true);
   }

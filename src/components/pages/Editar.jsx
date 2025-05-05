@@ -20,7 +20,7 @@ export const Editar = () => {
   const obtenerArticulo = async () => {
     const urlPeticion = Global.urlApiBase + `/articulos/${params.id}`;
     let { apiResponse } = await apiClientService(urlPeticion, "GET");
-    if (apiResponse.status === "Success") {
+    if (apiResponse.status === "OK") {
       setArticulo(apiResponse.articulo);
       setForm(apiResponse.articulo);
     } else {
@@ -38,7 +38,7 @@ export const Editar = () => {
       ArticuloEditado
     );
 
-    if (apiResponse.status === "Success") {
+    if (apiResponse.status === "OK") {
       setResult(true);
       upladImage(params.id, "#file", setError, errorMessage);
       setTimeout(() => goTo("/articulos"), 1000);
