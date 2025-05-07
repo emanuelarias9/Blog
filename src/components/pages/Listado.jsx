@@ -6,21 +6,25 @@ import { apiClientService } from "../../helpers/ApiClientService";
 export const Listado = ({ articulos, setArticulos }) => {
   useEffect(() => {
     const checkImages = async () => {
-      await Promise.all(
+      const articulosActualizados = await Promise.all(
         articulos.map(async (articulo) => {
           if (articulo.imagen !== "default.png") {
             const url = `${Global.urlApiBase}/articulos/imagen/${articulo.imagen}`;
-            const res = await apiClientService(url);
-            if (res.status != "OK") {
-              articulo.imagen = "default.png";
+            const res = await fetch(url, { method: "HEAD" });
+            console.log(res);
+            if (!res.ok) {
+              return { ...articulo, imagen: "default.png" };
             }
           }
+          return articulo;
         })
       );
+
+      setArticulos(articulosActualizados);
     };
 
     checkImages();
-  }, [articulos]);
+  }, []);
 
   const EliminarArticulo = async (id) => {
     let urlPeticion = Global.urlApiBase + "/articulos/" + id;
