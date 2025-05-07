@@ -6,28 +6,46 @@ export const apiClientService = async (
 ) => {
   let peticion;
   let loading = true;
+  let apiResponse;
+
+  if (method === "HEAD") {
+    peticion = await fetch(urlPeticion, {
+      method: method,
+    });
+    apiResponse = await peticion;
+    loading = false;
+    return { apiResponse, loading };
+  }
+
   if (method === "GET" || method === "DELETE") {
     peticion = await fetch(urlPeticion, {
       method: method,
     });
-  } else {
-    if (file) {
-      peticion = await fetch(urlPeticion, {
-        method: method,
-        body: data,
-      });
-    } else {
-      peticion = await fetch(urlPeticion, {
-        method: method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-    }
+    apiResponse = await peticion.json();
+    loading = false;
+    return { apiResponse, loading };
   }
 
-  let apiResponse = await peticion.json();
-  loading = false;
-  return { apiResponse, loading };
+  if (file && (method === "PUT" || method === "POST")) {
+    peticion = await fetch(urlPeticion, {
+      method: method,
+      body: data,
+    });
+    apiResponse = await peticion.json();
+    loading = false;
+    return { apiResponse, loading };
+  }
+
+  if (!file && (method === "PUT" || method === "POST")) {
+    peticion = await fetch(urlPeticion, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    apiResponse = await peticion.json();
+    loading = false;
+    return { apiResponse, loading };
+  }
 };
