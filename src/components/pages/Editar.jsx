@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { upladImage } from "../../helpers/UpladImage";
 import { useForm } from "../../hooks/useForm";
 import { Global } from "../../helpers/Global";
+import { checkImages } from "../../helpers/CheckImages";
 
 export const Editar = () => {
   const { form, setForm, cambiado } = useForm({});
@@ -23,6 +24,7 @@ export const Editar = () => {
     if (apiResponse.status === "OK") {
       setArticulo(apiResponse.articulo);
       setForm(apiResponse.articulo);
+      checkImages(apiResponse.articulo, setArticulo);
     } else {
       console.error("Error al obtener el articulo " + apiResponse.mensaje);
     }

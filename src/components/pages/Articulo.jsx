@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Global } from "../../helpers/Global";
 import { apiClientService } from "../../helpers/ApiClientService";
 import { useParams } from "react-router-dom";
+import { checkImages } from "../../helpers/CheckImages";
 
 export const Articulo = () => {
   const [articulo, setArticulo] = useState({});
@@ -16,6 +17,7 @@ export const Articulo = () => {
     let { apiResponse, loading } = await apiClientService(urlPeticion, "GET");
     if (apiResponse.status === "OK") {
       setArticulo(apiResponse.articulo);
+      checkImages(apiResponse.articulo, setArticulo);
     } else {
       console.error("Error al obtener el articulo " + apiResponse.mensaje);
     }

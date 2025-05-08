@@ -12,7 +12,7 @@ export const apiClientService = async (
     peticion = await fetch(urlPeticion, {
       method: method,
     });
-    apiResponse = await peticion;
+    apiResponse = peticion;
     loading = false;
     return { apiResponse, loading };
   }
