@@ -1,4 +1,4 @@
-import { Rutas } from "./routing/rutas";
+import { Rutas } from "./routing/Rutas";
 
 function App() {
   return (
